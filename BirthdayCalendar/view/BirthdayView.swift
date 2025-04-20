@@ -14,6 +14,17 @@ struct BirthdayView: View {
     
     @State var showSheet: Bool = false
     @State private var currentBirthday: Birthday = Birthday()
+    
+    @Query(
+        sort: \Birthday.birthday,
+        order: .forward
+    )
+    private var birthdayByBirthdays: [Birthday]
+    
+    
+    private var birthdays: [Birthday] {
+        return birthdayByBirthdays
+    }
 
 
     
@@ -22,7 +33,13 @@ struct BirthdayView: View {
         NavigationStack {
             VStack {
                 
-                Spacer()
+                List {
+                    ForEach(birthdays) { birthday in
+                        BirthdayCard(birthday: birthday)
+                    }
+                }
+                
+                
             }.navigationTitle("Birthdays")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {

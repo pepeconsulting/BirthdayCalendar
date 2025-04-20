@@ -56,6 +56,10 @@ struct BirthdayFormView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
+                        birthday.name = name
+                        birthday.birthday = date
+                        onSave(birthday)
+                    
                         dismiss()
                     }
                     .disabled(isSaveDisabled)

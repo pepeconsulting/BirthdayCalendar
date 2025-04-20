@@ -11,7 +11,7 @@ import SwiftUI
 struct BirthdayCalendarApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            BirthdayView().modelContainer(for: Birthday.self)
         }
     }
 }
