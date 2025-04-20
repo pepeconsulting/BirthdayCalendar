@@ -36,8 +36,12 @@ struct BirthdayView: View {
                 List {
                     ForEach(birthdays) { birthday in
                         BirthdayCard(birthday: birthday)
-                    }
-                }
+                            .onTapGesture {
+                                currentBirthday = birthday
+                                showSheet.toggle()
+                            }
+
+                    }                }
                 
                 
             }.navigationTitle("Birthdays")
@@ -51,6 +55,7 @@ struct BirthdayView: View {
                 }
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     Button {
+                        currentBirthday = Birthday()
                         showSheet.toggle()
                     }
                     label : {

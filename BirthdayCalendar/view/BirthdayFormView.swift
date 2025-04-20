@@ -12,10 +12,7 @@ struct BirthdayFormView: View {
     
     @Binding var birthday: Birthday
     let onSave: (Birthday) -> Void
-    
-    @State private var name : String = ""
-    @State private var date : Date = Date()
-    
+        
     
     let dateRange : ClosedRange<Date> = {
         let calendar = Calendar.current
@@ -30,7 +27,7 @@ struct BirthdayFormView: View {
     
     //Disable save button
     var isSaveDisabled : Bool {
-        name.isEmpty
+        false
     }
     
     var body: some View {
@@ -38,11 +35,12 @@ struct BirthdayFormView: View {
             Form {
                 Section("Birthday") {
                     LabeledContent {
-                      TextField("", text: $name)
+                        TextField("", text: $birthday.name)
                     } label: {
-                      Label("Name:", systemImage: "person.circle")                    }
+                      Label("Name:", systemImage: "person.circle")
+                    }
                     
-                    DatePicker(selection: $date, in: dateRange, displayedComponents: [.date], label: {
+                    DatePicker(selection: $birthday.birthday, in: dateRange, displayedComponents: [.date], label: {
                         Label("Birth date:", systemImage: "calendar")
                     })
                 }
@@ -56,8 +54,6 @@ struct BirthdayFormView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
-                        birthday.name = name
-                        birthday.birthday = date
                         onSave(birthday)
                     
                         dismiss()
