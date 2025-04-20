@@ -6,14 +6,34 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		20FB6D5C2DB52EF000FEE018 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 20FB6D5B2DB52EF000FEE018 /* ViewInspector */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		20FB6D532DB52E3600FEE018 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20FB6D012DB5157F00FEE018 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20FB6D082DB5157F00FEE018;
+			remoteInfo = BirthdayCalendar;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		20FB6D092DB5157F00FEE018 /* BirthdayCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BirthdayCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		20FB6D4F2DB52E3600FEE018 /* BirthdayCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BirthdayCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		20FB6D0B2DB5157F00FEE018 /* BirthdayCalendar */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BirthdayCalendar;
+			sourceTree = "<group>";
+		};
+		20FB6D502DB52E3600FEE018 /* BirthdayCalendarTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BirthdayCalendarTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +46,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		20FB6D4C2DB52E3600FEE018 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20FB6D5C2DB52EF000FEE018 /* ViewInspector in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				20FB6D0B2DB5157F00FEE018 /* BirthdayCalendar */,
+				20FB6D502DB52E3600FEE018 /* BirthdayCalendarTests */,
 				20FB6D0A2DB5157F00FEE018 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				20FB6D092DB5157F00FEE018 /* BirthdayCalendar.app */,
+				20FB6D4F2DB52E3600FEE018 /* BirthdayCalendarTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +100,30 @@
 			productReference = 20FB6D092DB5157F00FEE018 /* BirthdayCalendar.app */;
 			productType = "com.apple.product-type.application";
 		};
+		20FB6D4E2DB52E3600FEE018 /* BirthdayCalendarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20FB6D552DB52E3600FEE018 /* Build configuration list for PBXNativeTarget "BirthdayCalendarTests" */;
+			buildPhases = (
+				20FB6D4B2DB52E3600FEE018 /* Sources */,
+				20FB6D4C2DB52E3600FEE018 /* Frameworks */,
+				20FB6D4D2DB52E3600FEE018 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				20FB6D542DB52E3600FEE018 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				20FB6D502DB52E3600FEE018 /* BirthdayCalendarTests */,
+			);
+			name = BirthdayCalendarTests;
+			packageProductDependencies = (
+				20FB6D5B2DB52EF000FEE018 /* ViewInspector */,
+			);
+			productName = BirthdayCalendarTests;
+			productReference = 20FB6D4F2DB52E3600FEE018 /* BirthdayCalendarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -83,6 +137,10 @@
 					20FB6D082DB5157F00FEE018 = {
 						CreatedOnToolsVersion = 16.3;
 					};
+					20FB6D4E2DB52E3600FEE018 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 20FB6D082DB5157F00FEE018;
+					};
 				};
 			};
 			buildConfigurationList = 20FB6D042DB5157F00FEE018 /* Build configuration list for PBXProject "BirthdayCalendar" */;
@@ -95,18 +153,29 @@
 			);
 			mainGroup = 20FB6D002DB5157F00FEE018;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				20FB6D5A2DB52EF000FEE018 /* XCRemoteSwiftPackageReference "ViewInspector" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 20FB6D0A2DB5157F00FEE018 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				20FB6D082DB5157F00FEE018 /* BirthdayCalendar */,
+				20FB6D4E2DB52E3600FEE018 /* BirthdayCalendarTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		20FB6D072DB5157F00FEE018 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20FB6D4D2DB52E3600FEE018 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -123,7 +192,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		20FB6D4B2DB52E3600FEE018 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		20FB6D542DB52E3600FEE018 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 20FB6D082DB5157F00FEE018 /* BirthdayCalendar */;
+			targetProxy = 20FB6D532DB52E3600FEE018 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		20FB6D122DB5158000FEE018 /* Debug */ = {
@@ -305,6 +389,42 @@
 			};
 			name = Release;
 		};
+		20FB6D562DB52E3600FEE018 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2Q93SCVU99;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.lovholm.BirthdayCalendarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BirthdayCalendar.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BirthdayCalendar";
+			};
+			name = Debug;
+		};
+		20FB6D572DB52E3600FEE018 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2Q93SCVU99;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.lovholm.BirthdayCalendarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BirthdayCalendar.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BirthdayCalendar";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -326,7 +446,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		20FB6D552DB52E3600FEE018 /* Build configuration list for PBXNativeTarget "BirthdayCalendarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20FB6D562DB52E3600FEE018 /* Debug */,
+				20FB6D572DB52E3600FEE018 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		20FB6D5A2DB52EF000FEE018 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		20FB6D5B2DB52EF000FEE018 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20FB6D5A2DB52EF000FEE018 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 20FB6D012DB5157F00FEE018 /* Project object */;
 }
