@@ -6,9 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct BirthdayView: View {
+    @Environment(\.modelContext) private var modelContext
+
+    
     @State var showSheet: Bool = false
+    @State private var currentBirthday: Birthday = Birthday()
+
 
     
     var body: some View {
@@ -41,7 +47,13 @@ struct BirthdayView: View {
                     
                 }
             .sheet(isPresented: $showSheet) {
-                BirthdayFormView()
+                BirthdayFormView(birthday: $currentBirthday) { newBirthday in
+                    modelContext.insert(currentBirthday)
+                    try? modelContext.save()
+                    
+                    showSheet.toggle()
+                    
+                }
             }
 
 
@@ -57,4 +69,5 @@ struct BirthdayView: View {
 
 #Preview {
     BirthdayView()
+        .modelContainer(for: Birthday.self)
 }

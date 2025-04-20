@@ -9,11 +9,11 @@ import Foundation
 import SwiftData
 
 @Model
-class Birthday {
+class Birthday: Identifiable {
     var name: String
     var birthday: Date
     
-    init(name: String, birthday: Date) {
+    init(name: String = "", birthday: Date = Date()) {
         self.name = name
         self.birthday = birthday
     }
