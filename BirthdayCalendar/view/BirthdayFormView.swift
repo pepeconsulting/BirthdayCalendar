@@ -12,6 +12,8 @@ struct BirthdayFormView: View {
     
     @Binding var birthday: Birthday
     let onSave: (Birthday) -> Void
+    
+    @State private var selectionFilter: Filter = .fromContacts
         
     
     let dateRange : ClosedRange<Date> = {
@@ -33,18 +35,42 @@ struct BirthdayFormView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Birthday") {
-                    LabeledContent {
-                        TextField("", text: $birthday.name)
-                    } label: {
-                      Label("Name:", systemImage: "person.circle")
+                Picker("Get contact", selection: $selectionFilter) {
+                    Text("From contacts").tag(Filter.fromContacts)
+                    Text("Add manually").tag(Filter.addManually)
+                }.pickerStyle(SegmentedPickerStyle())
+                
+                if(selectionFilter == Filter.fromContacts) {
+                    Section("Import from contacts") {
+                        Button {
+                        } label: {
+                            Label("Connect to contacts", systemImage: "person.crop.circle.fill")
+                        }.disabled(true)
                     }
-                    
-                    DatePicker(selection: $birthday.birthday, in: dateRange, displayedComponents: [.date], label: {
-                        Label("Birth date:", systemImage: "calendar")
-                    })
                 }
-
+                
+                if(selectionFilter == Filter.addManually) {
+                    Section("Add manually") {
+                        LabeledContent {
+                            TextField("", text: $birthday.name)
+                        } label: {
+                            Label("Name:", systemImage: "person.circle")
+                        }
+                        
+                        DatePicker(selection: $birthday.birthday, in: dateRange, displayedComponents: [.date], label: {
+                            Label("Birth date:", systemImage: "calendar")
+                        })
+                    }
+                }
+                
+                // Share and import from contacts:
+                Section("Things") {
+                    Button {
+                    } label: {
+                        Label("Share contact", systemImage: "square.and.arrow.up")
+                    }.disabled(true)
+                }
+                
             }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -55,7 +81,7 @@ struct BirthdayFormView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
                         onSave(birthday)
-                    
+                        
                         dismiss()
                     }
                     .disabled(isSaveDisabled)
@@ -63,6 +89,12 @@ struct BirthdayFormView: View {
             }
         }
     }
+}
+
+enum Filter {
+    case none
+    case fromContacts
+    case addManually
 }
 
 #Preview {
