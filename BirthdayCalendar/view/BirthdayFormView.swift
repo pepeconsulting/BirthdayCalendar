@@ -43,7 +43,7 @@ struct BirthdayFormView: View {
                       Label("Name:", systemImage: "person.circle")                    }
                     
                     DatePicker(selection: $date, in: dateRange, displayedComponents: [.date], label: {
-                        Label("Birthday:", systemImage: "calendar")
+                        Label("Birth date:", systemImage: "calendar")
                     })
                 }
 

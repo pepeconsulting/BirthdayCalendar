@@ -15,7 +15,7 @@ struct BirthdayCard: View {
                 .fontWeight(.bold)
             Text(birthday.formattedDate)
                 .fontWeight(.regular)
-            Text("\(String(birthday.ageThisYear)) this year")
+            Text("turns \(String(birthday.ageThisYear)) this year")
         }
     }
 }

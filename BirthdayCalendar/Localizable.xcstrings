@@ -1,0 +1,88 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "Advance" : {
+
+    },
+    "Birth date:" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fødselsdato:"
+          }
+        }
+      }
+    },
+    "Birthday" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bursdag"
+          }
+        }
+      }
+    },
+    "Birthdays" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bursdager"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+
+    },
+    "Info" : {
+
+    },
+    "Name:" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navn:"
+          }
+        }
+      }
+    },
+    "Save" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lagre"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Innstillinger"
+          }
+        }
+      }
+    },
+    "turns %@ this year" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fyller %@ dette året"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
