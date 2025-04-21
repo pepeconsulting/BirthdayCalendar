@@ -4,6 +4,12 @@
     "" : {
 
     },
+    "Add manually" : {
+
+    },
+    "Add/edit manually" : {
+
+    },
     "Advance" : {
 
     },
@@ -18,6 +24,7 @@
       }
     },
     "Birthday" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nb" : {
           "stringUnit" : {
@@ -38,6 +45,18 @@
       }
     },
     "Cancel" : {
+
+    },
+    "Fetch from contacts" : {
+
+    },
+    "Get contact" : {
+
+    },
+    "Get from your contacts" : {
+
+    },
+    "Import from contacts" : {
 
     },
     "Info" : {
@@ -72,6 +91,12 @@
           }
         }
       }
+    },
+    "Share contact" : {
+
+    },
+    "Things" : {
+
     },
     "turns %@ this year" : {
       "localizations" : {

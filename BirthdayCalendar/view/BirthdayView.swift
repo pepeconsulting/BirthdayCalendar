@@ -14,6 +14,7 @@ struct BirthdayView: View {
     
     @State var showSheet: Bool = false
     @State private var currentBirthday: Birthday = Birthday()
+    @State private var isEditMode: Bool = false
     
     @Query(
         sort: \Birthday.birthday,
@@ -37,6 +38,7 @@ struct BirthdayView: View {
                     ForEach(birthdays) { birthday in
                         BirthdayCard(birthday: birthday)
                             .onTapGesture {
+                                isEditMode = true
                                 currentBirthday = birthday
                                 showSheet.toggle()
                             }
@@ -55,6 +57,7 @@ struct BirthdayView: View {
                 }
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     Button {
+                        isEditMode = false
                         currentBirthday = Birthday()
                         showSheet.toggle()
                     }
@@ -69,7 +72,7 @@ struct BirthdayView: View {
                     
                 }
             .sheet(isPresented: $showSheet) {
-                BirthdayFormView(birthday: $currentBirthday) { newBirthday in
+                BirthdayFormView(isEditing: $isEditMode, birthday: $currentBirthday) { newBirthday in
                     modelContext.insert(currentBirthday)
                     try? modelContext.save()
                     

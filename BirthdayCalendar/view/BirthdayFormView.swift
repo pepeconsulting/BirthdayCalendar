@@ -10,11 +10,13 @@ import SwiftUI
 struct BirthdayFormView: View {
     @Environment(\.dismiss) private var dismiss
     
+    @Binding var isEditing: Bool
     @Binding var birthday: Birthday
     let onSave: (Birthday) -> Void
     
     @State private var selectionFilter: Filter = .fromContacts
-        
+    @State private var showContactPicker = false
+
     
     let dateRange : ClosedRange<Date> = {
         let calendar = Calendar.current
@@ -35,21 +37,24 @@ struct BirthdayFormView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Picker("Get contact", selection: $selectionFilter) {
-                    Text("From contacts").tag(Filter.fromContacts)
-                    Text("Add manually").tag(Filter.addManually)
-                }.pickerStyle(SegmentedPickerStyle())
+                if(!isEditing) {
+                    Picker("Get contact", selection: $selectionFilter) {
+                        Text("Fetch from contacts").tag(Filter.fromContacts)
+                        Text("Add/edit manually").tag(Filter.addManually)
+                    }.pickerStyle(SegmentedPickerStyle())
+                }
                 
-                if(selectionFilter == Filter.fromContacts) {
+                if(!isEditing && selectionFilter == Filter.fromContacts) {
                     Section("Import from contacts") {
                         Button {
+                            showContactPicker.toggle()
                         } label: {
-                            Label("Connect to contacts", systemImage: "person.crop.circle.fill")
-                        }.disabled(true)
+                            Label("Get from your contacts", systemImage: "person.crop.circle.fill")
+                        }
                     }
                 }
                 
-                if(selectionFilter == Filter.addManually) {
+                if(isEditing || selectionFilter == Filter.addManually) {
                     Section("Add manually") {
                         LabeledContent {
                             TextField("", text: $birthday.name)
@@ -66,6 +71,7 @@ struct BirthdayFormView: View {
                 // Share and import from contacts:
                 Section("Things") {
                     Button {
+                        
                     } label: {
                         Label("Share contact", systemImage: "square.and.arrow.up")
                     }.disabled(true)
@@ -87,7 +93,22 @@ struct BirthdayFormView: View {
                     .disabled(isSaveDisabled)
                 }
             }
+            .sheet(isPresented: $showContactPicker) {
+                ContactPicker { contact in
+                    birthday.name = "\(contact.givenName) \(contact.familyName)"
+                    if(contact.birthday != nil) {
+                        birthday.birthday = dateFromDateComponents(contact.birthday ?? DateComponents()) ?? Date()
+                    }
+                    selectionFilter = .addManually
+                }
+            }
         }
+    }
+    
+    func dateFromDateComponents(_ dateComponents: DateComponents) -> Date? {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = .current
+        return calendar.date(from: dateComponents)
     }
 }
 
@@ -97,6 +118,9 @@ enum Filter {
     case addManually
 }
 
+
+
+
 #Preview {
-    BirthdayFormView(birthday: .constant(Birthday()), onSave: {_ in})
+    BirthdayFormView(isEditing: .constant(false), birthday: .constant(Birthday()), onSave: {_ in})
 }
