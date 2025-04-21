@@ -17,7 +17,7 @@ struct BirthdayView: View {
     @State private var isEditMode: Bool = false
     
     @Query(
-        sort: \Birthday.birthday,
+        sort: \Birthday.dayOfYearInt,
         order: .forward
     )
     private var birthdayByBirthdays: [Birthday]

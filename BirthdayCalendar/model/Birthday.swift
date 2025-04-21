@@ -11,7 +11,13 @@ import SwiftData
 @Model
 class Birthday: Identifiable {
     var name: String
-    var birthday: Date
+    var birthday: Date {
+             didSet {
+                 updateDayOfYear()
+        }
+    }
+    var dayOfYearInt: Int
+
     
     var ageThisYear : Int {
         let calendar = Calendar.current
@@ -25,6 +31,7 @@ class Birthday: Identifiable {
         formatter.dateFormat = "d MMMM" // e.g., "April 20"
         return formatter.string(from: birthday)
     }
+    
     
     var isPassedThisYear: Bool {
         let calendar = Calendar.current
@@ -46,10 +53,14 @@ class Birthday: Identifiable {
         return birthdayThisYear < now
     }
     
+    private func updateDayOfYear() {
+        self.dayOfYearInt = Calendar.current.ordinality(of: .day, in: .year, for: birthday) ?? 0
+    }
     
     init(name: String = "", birthday: Date = Date()) {
         self.name = name
         self.birthday = birthday
+        self.dayOfYearInt = Calendar.current.ordinality(of: .day, in: .year, for: birthday) ?? 0
     }
     
 }
