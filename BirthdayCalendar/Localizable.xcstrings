@@ -4,6 +4,16 @@
     "" : {
 
     },
+    "%@ – %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ – %2$@"
+          }
+        }
+      }
+    },
     "Add manually" : {
 
     },
@@ -34,6 +44,9 @@
         }
       }
     },
+    "Birthday view" : {
+
+    },
     "Birthdays" : {
       "localizations" : {
         "nb" : {
@@ -60,6 +73,12 @@
 
     },
     "Info" : {
+
+    },
+    "List" : {
+
+    },
+    "List by month" : {
 
     },
     "Name:" : {

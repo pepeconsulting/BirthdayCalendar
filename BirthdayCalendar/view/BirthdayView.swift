@@ -15,6 +15,7 @@ struct BirthdayView: View {
     @State var showSheet: Bool = false
     @State private var currentBirthday: Birthday = Birthday()
     @State private var isEditMode: Bool = false
+    @State private var birthdayView : BirthdayListViewType = .simpleList
     
     @Query(
         sort: \Birthday.dayOfYearInt,
@@ -27,70 +28,74 @@ struct BirthdayView: View {
         return birthdayByBirthdays
     }
 
-
     
     var body: some View {
         
         NavigationStack {
             VStack {
                 
-                List {
-                    ForEach(birthdays) { birthday in
-                        BirthdayCard(birthday: birthday)
-                            .onTapGesture {
-                                isEditMode = true
-                                currentBirthday = birthday
-                                showSheet.toggle()
-                            }
-
-                    }                }
+                Picker("Birthday view", selection: $birthdayView) {
+                    Text("List").tag(BirthdayListViewType.simpleList)
+                    Text("List by month").tag(BirthdayListViewType.groupByMonthList)
+                }.pickerStyle(SegmentedPickerStyle())
+                    .padding()
+                
+                if(birthdayView == BirthdayListViewType.simpleList) {
+                    PlainList(isEditMode: $isEditMode, showSheet: $showSheet,  currentBirthday: $currentBirthday, birthdays: birthdays)
+                    
+                }
+                if (birthdayView == BirthdayListViewType.groupByMonthList ) {
+                    GroupedByMonthList(isEditMode: $isEditMode, showSheet: $showSheet, currentBirthday: $currentBirthday, birthdays: birthdays)
+                }
                 
                 
             }.navigationTitle("Birthdays")
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            
+                        } label : {
+                            Label("Advance", systemImage: "text.book.closed")
+                        }
+                    }
+                    ToolbarItemGroup(placement: .topBarTrailing) {
+                        Button {
+                            isEditMode = false
+                            currentBirthday = Birthday()
+                            showSheet.toggle()
+                        }
+                        label : {
+                            Label("Settings", systemImage: "plus")
+                        }
+                        Button {}
+                        label : {
+                            Label("Info", systemImage: "info.circle")
+                        }
+                    }
+                    
+                }
+                .sheet(isPresented: $showSheet) {
+                    BirthdayFormView(isEditing: $isEditMode, birthday: $currentBirthday) { newBirthday in
+                        modelContext.insert(currentBirthday)
+                        try? modelContext.save()
                         
-                    } label : {
-                        Label("Advance", systemImage: "text.book.closed")
-                    }
-                }
-                ToolbarItemGroup(placement: .topBarTrailing) {
-                    Button {
-                        isEditMode = false
-                        currentBirthday = Birthday()
                         showSheet.toggle()
-                    }
-                    label : {
-                        Label("Settings", systemImage: "plus")
-                    }
-                    Button {}
-                    label : {
-                        Label("Info", systemImage: "info.circle")
+                        
                     }
                 }
-                    
-                }
-            .sheet(isPresented: $showSheet) {
-                BirthdayFormView(isEditing: $isEditMode, birthday: $currentBirthday) { newBirthday in
-                    modelContext.insert(currentBirthday)
-                    try? modelContext.save()
-                    
-                    showSheet.toggle()
-                    
-                }
-            }
-
-
         }
-
-        
-    
-        
-        
         
     }
+    
 }
+
+enum BirthdayListViewType {
+    case simpleList
+    case groupByMonthList
+}
+
+
+
 
 #Preview {
     BirthdayView()

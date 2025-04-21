@@ -10,6 +10,8 @@ import SwiftData
 
 @Model
 class Birthday: Identifiable {
+    
+    // Persisted values
     var name: String
     var birthday: Date {
              didSet {
@@ -18,6 +20,14 @@ class Birthday: Identifiable {
     }
     var dayOfYearInt: Int
 
+    
+    var monthNumber : Int {
+        return birthday.monthNumber
+    }
+    
+    var localizedMonthName : String {
+        return birthday.localizedMonthName
+    }
     
     var ageThisYear : Int {
         let calendar = Calendar.current

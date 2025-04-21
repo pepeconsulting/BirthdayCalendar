@@ -14,7 +14,7 @@ struct BirthdayFormView: View {
     @Binding var birthday: Birthday
     let onSave: (Birthday) -> Void
     
-    @State private var selectionFilter: Filter = .fromContacts
+    @State private var selectionFilter: CreateByFilter = .fromContacts
     @State private var showContactPicker = false
 
     
@@ -39,12 +39,12 @@ struct BirthdayFormView: View {
             Form {
                 if(!isEditing) {
                     Picker("Get contact", selection: $selectionFilter) {
-                        Text("Fetch from contacts").tag(Filter.fromContacts)
-                        Text("Add/edit manually").tag(Filter.addManually)
+                        Text("Fetch from contacts").tag(CreateByFilter.fromContacts)
+                        Text("Add/edit manually").tag(CreateByFilter.addManually)
                     }.pickerStyle(SegmentedPickerStyle())
                 }
                 
-                if(!isEditing && selectionFilter == Filter.fromContacts) {
+                if(!isEditing && selectionFilter == CreateByFilter.fromContacts) {
                     Section("Import from contacts") {
                         Button {
                             showContactPicker.toggle()
@@ -54,7 +54,7 @@ struct BirthdayFormView: View {
                     }
                 }
                 
-                if(isEditing || selectionFilter == Filter.addManually) {
+                if(isEditing || selectionFilter == CreateByFilter.addManually) {
                     Section("Add manually") {
                         LabeledContent {
                             TextField("", text: $birthday.name)
@@ -112,7 +112,7 @@ struct BirthdayFormView: View {
     }
 }
 
-enum Filter {
+enum CreateByFilter {
     case none
     case fromContacts
     case addManually
